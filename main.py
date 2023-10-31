@@ -20,7 +20,7 @@ class MainWindow(QTabWidget):
 
 def main():
     app = QApplication(sys.argv)
-    events = EventList('messages.text')
+    events = EventList('/home/roland/Heizung/Plannung/messages.text')
     main = MainWindow(events)
     main.show()
     sys.exit(app.exec_())

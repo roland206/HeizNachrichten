@@ -71,6 +71,7 @@ class EventTable(QTableWidget):
         for i in range(len(width)):
            self.setColumnWidth(i, width[i])
 
+        self.itemChanged.connect(self.cellChanged)
         self.update()
 
     def cellChanged(self):

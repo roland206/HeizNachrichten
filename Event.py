@@ -1,5 +1,7 @@
 from datetime import datetime,timedelta
-
+textGS = 'werden gelbe säcke abgeholt'
+textAP = 'wird altpapier abgeholt'
+textHM = 'wird hausmüll abgeholt'
 class Event():
     def __init__(self, wd, tag, monat, jahr, text, vorab):
         if tag   != '*': tag   = int(tag)
@@ -18,11 +20,11 @@ class Event():
             self.type = 2
         elif jahr == '*':
             self.type = 3
-        elif text == 'werden gelb säcke abgeholt':
+        elif text == textGS:
             self.type = 4
-        elif text == 'wird atlpapier abgeholt':
+        elif text == textAP:
             self.type = 5
-        elif text == 'wird müll abgeholt':
+        elif text == textHM:
             self.type = 6
 
     def isObsolete(self):
@@ -40,6 +42,7 @@ class Event():
 
 class EventList():
     def __init__(self, filename):
+
         self.filename = filename
         self.allElements = []
         older = datetime.now() - timedelta(1)
@@ -59,6 +62,9 @@ class EventList():
         if   type == 1: dummy = Event(0, '*', '*', '*', 'neuer Eintrag', True)
         elif type == 2: dummy = Event(-1, today.day, '*', '*', 'neuer Eintrag', True)
         elif type == 3: dummy = Event(-1, today.day, today.month, '*', 'neuer Eintrag', True)
+        elif type == 4: dummy = Event(-1, today.day, today.month, today.year, textGS, True)
+        elif type == 5: dummy = Event(-1, today.day, today.month, today.year, textAP, True)
+        elif type == 6: dummy = Event(-1, today.day, today.month, today.year, textHM, True)
         else:           dummy = Event(-1, today.day, today.month, today.year, 'neuer Eintrag', True)
         self.addEvent(dummy)
         list.append(dummy)
@@ -70,11 +76,11 @@ class EventList():
             for ev in self.allElements:
                 if ev.text == 'neuer Eintrag': continue
                 if ev.type == 4:
-                    text == 'werden gelb säcke abgeholt'
+                    text = textGS
                 elif ev.type == 5:
-                    text == 'wird atlpapier abgeholt'
+                    text = textAP
                 elif ev.type == 6:
-                    text == 'wird müll abgeholt'
+                    text = textHM
                 else:
                     text = ev.text
                 if ev.vorab: text = '+' + text
