@@ -1,5 +1,5 @@
 import os
-
+import platform
 from PyQt5.QtWidgets import QApplication, QWidget, QDialog, QCheckBox, QFormLayout, QTabWidget
 import sys
 from EventWidget import EventWidget
@@ -21,7 +21,10 @@ class MainWindow(QTabWidget):
 
 def main():
     app = QApplication(sys.argv)
-    os.chdir(sys.argv[0].replace('/main.py', ''))
+    if platform.system() == 'Windows':
+        os.chdir(sys.argv[0].replace('\\main.py', ''))
+    else:
+        os.chdir(sys.argv[0].replace('/main.py', ''))
     events = EventList('/home/roland/Heizung/Plannung/messages.text')
     main = MainWindow(events)
     main.show()
