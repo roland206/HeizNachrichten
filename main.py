@@ -9,14 +9,14 @@ class MainWindow(QTabWidget):
 
         self.setStyleSheet('font-size: 14pt; font-family: Arial;')
         self.setWindowTitle("Tagenachrichten")
-        self.addTab(EventWidget(self, events, 0)  , "Einmalig")
-        self.addTab(EventWidget(self, events, 1)  , "Wöchentlich")
-        self.addTab(EventWidget(self, events, 2)  , "Monatlich")
-        self.addTab(EventWidget(self, events, 3)  , "Jährlich")
-        self.addTab(EventWidget(self, events, 4)  , "Gelbe Säcke")
-        self.addTab(EventWidget(self, events, 6)  , "Hausmüll")
-        self.addTab(EventWidget(self, events, 5)  , "Altpapier")
-        self.resize(2200, 1600)
+        self.addTab(EventWidget(self, events, 0, images = ['klavier.png', 'untersuchung.png'])  , "Einmalig")
+        self.addTab(EventWidget(self, events, 1, images = ['blumen.png'])  , "Wöchentlich")
+        self.addTab(EventWidget(self, events, 2, images = ['spuelen.png'])  , "Monatlich")
+        self.addTab(EventWidget(self, events, 3, images = ['party.png'])  , "Jährlich")
+        self.addTab(EventWidget(self, events, 4, images = ['gelbesaecke.png'])  , "Gelbe Säcke")
+        self.addTab(EventWidget(self, events, 6, images = ['Hausmuell.png'])  , "Hausmüll")
+        self.addTab(EventWidget(self, events, 5, images = ['altpapier.png'])  , "Altpapier")
+        self.resize(2400, 1600)
 
 def main():
     app = QApplication(sys.argv)

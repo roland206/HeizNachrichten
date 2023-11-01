@@ -1,4 +1,4 @@
-from PyQt5.QtGui import QFont, QColor
+from PyQt5.QtGui import QFont, QColor, QPixmap
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt, QEvent
 import socket
@@ -138,7 +138,7 @@ class EventTable(QTableWidget):
         self.ignoreChanges = False
 
 class EventWidget(QWidget):
-    def __init__(self, main, events, type, parent=None):
+    def __init__(self, main, events, type, images = None, parent=None):
         QWidget.__init__(self, parent)
         self.main = main
         self.events = events
@@ -152,6 +152,13 @@ class EventWidget(QWidget):
         self.ctlLayout = QVBoxLayout()
         self.controlWidget.setLayout(self.ctlLayout)
 
+        if images is not None:
+            for image in images:
+                label = QLabel(self)
+                pixmap = QPixmap(image)
+                pixmap_resized = pixmap.scaled(720, 405, Qt.KeepAspectRatio)
+                label.setPixmap(pixmap_resized)
+                self.ctlLayout.addWidget(label)
 
         button = QPushButton('Chronoloisch sortieren')
         button.clicked.connect(self.sortData)
