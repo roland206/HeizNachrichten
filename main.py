@@ -1,3 +1,4 @@
+import os
 
 from PyQt5.QtWidgets import QApplication, QWidget, QDialog, QCheckBox, QFormLayout, QTabWidget
 import sys
@@ -20,6 +21,7 @@ class MainWindow(QTabWidget):
 
 def main():
     app = QApplication(sys.argv)
+    os.chdir(sys.argv[0].replace('/main.py', ''))
     events = EventList('/home/roland/Heizung/Plannung/messages.text')
     main = MainWindow(events)
     main.show()
