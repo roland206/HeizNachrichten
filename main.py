@@ -14,8 +14,8 @@ class MainWindow(QTabWidget):
         self.addTab(EventWidget(self, events, 2)  , "Monatlich")
         self.addTab(EventWidget(self, events, 3)  , "Jährlich")
         self.addTab(EventWidget(self, events, 4)  , "Gelbe Säcke")
-        self.addTab(EventWidget(self, events, 5)  , "Hausmüll")
-        self.addTab(EventWidget(self, events, 6)  , "Altpapier")
+        self.addTab(EventWidget(self, events, 6)  , "Hausmüll")
+        self.addTab(EventWidget(self, events, 5)  , "Altpapier")
         self.resize(2200, 1600)
 
 def main():
